@@ -24,10 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	  <form action="${pageContext.request.contextPath}/login.action" method="post">
+	  <form  method="post"> <!--  action="${pageContext.request.contextPath}/login.action" -->
 	         用户名:<input type="text" name="username" /><br>
     	密码:<input type="text" name="password" /><br>
 	  	<input type="submit" value="登录" />
-	  </form>
+    </form>
   </body>
 </html>

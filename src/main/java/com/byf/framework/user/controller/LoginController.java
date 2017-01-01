@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.byf.framework.user.model.User;
 import com.byf.framework.user.service.IUserService;
@@ -18,6 +19,7 @@ import com.byf.framework.user.service.IUserService;
  * 登录认证的控制器 
  */
 @Controller
+@RequestMapping("/hello")
 public class LoginController {
 	   /** 
 	     * 登录 
@@ -29,14 +31,19 @@ public class LoginController {
 	     *          密码 
 	     * @return 
 	     */
+	    @RequestMapping(method={RequestMethod.GET,RequestMethod.POST})
+	    public String processWebRequest(){
+	    	return "doctorPatient";
+	    }
 
-        @RequestMapping(value="/login") 
-        public String login(HttpSession session,String username,String password) throws Exception{
+	    /* public ModelAndView login(HttpSession session,String username,String password) throws Exception{
             //在Session里保存信息  
+        	 System.out.println("进入了login方法");
              session.setAttribute("username", username);
              //重定向  
-             return "redirect:hello.action";
-        } 
+            // return "redirect:hello.action";
+             return new ModelAndView("hello.jsp");  
+        } */
         /** 
              * 退出系统 
              * @param session 
@@ -44,7 +51,6 @@ public class LoginController {
              * @return 
              * @throws Exception 
              */ 
-        @RequestMapping(value="/logout") 
           public String logout(HttpSession session) throws Exception{
         	//清除session
         	session.invalidate();

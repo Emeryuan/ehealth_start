@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:mvc="http://www.springframework.org/schema/mvc" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
 http://www.springframework.org/schema/context 
 http://www.springframework.org/schema/context/spring-context-3.0.xsd 
@@ -36,8 +38,8 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	</bean>
 
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
-
+<!-- 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+	p:prefix="/" p:suffix=".jsp" />    -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding">
 			<value>UTF-8</value>
@@ -49,21 +51,23 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 			<value>4096</value>
 		</property>
 	</bean>
-			<!-- 视图解析器ViewResolver -->
-		<!-- 解析jsp,默认支持jstl -->
-		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <!-- 视图解析器ViewResolver -->
+ <!-- 解析jsp,默认支持jstl -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-			<property name="prefix" value="/WEB-INF/jsp/" />
-			<property name="suffix" value=".jsp" />
-		</bean>
+			<property name="prefix" value="/" />
+			<property name="suffix" value=".html" />
+		</bean>      
 		<!-- 在实际开发中通常都需配置 mvc:annotation-driven标签,这个标签是开启注解 -->
 		<mvc:annotation-driven></mvc:annotation-driven>
 		<!-- 拦截器 -->
 		<mvc:interceptors>
 			<!-- 多个拦截器，顺序执行 -->
-			<mvc:interceptor>
-				<mvc:mapping path="/**"/>
-				<bean class="com.bylu.interceptor.LoginInterceptor"></bean>
-			</mvc:interceptor>
+            <bean class="com.bylu.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptors>
+		<!-- 对静态资源文件的访问 -->
+    <mvc:resources location="/images/" mapping="/images/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/fonts/" mapping="/fonts/**"/>
 </beans>

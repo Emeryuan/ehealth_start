@@ -1,5 +1,0 @@
-com\byf\framework\user\service\impl\UserServiceImpl.class
-com\byf\framework\user\controller\UserController.class
-com\byf\framework\user\service\IUserService.class
-com\byf\framework\user\model\User.class
-com\byf\framework\user\dao\UserMapper.class
