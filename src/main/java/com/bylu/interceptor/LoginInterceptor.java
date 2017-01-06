@@ -51,10 +51,10 @@ public class LoginInterceptor implements HandlerInterceptor{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("执行了prehandle方法");
 		//对用户是否登录进行判断
-		if(request.getSession().getAttribute("user")==null){
+/*		if(request.getSession().getAttribute("user")==null){
 			request.getRequestDispatcher("/index.html").forward(request, response);
 			return false;
-		}    
+		}    */
 		return true;
 	}
 

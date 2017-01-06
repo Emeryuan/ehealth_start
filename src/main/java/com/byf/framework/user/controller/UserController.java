@@ -16,11 +16,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.byf.framework.user.model.User;
 import com.byf.framework.user.service.IUserService;
+import com.byf.framework.user.service.IUserService2;
 
 @Controller
 @RequestMapping("/userController")
 public class UserController {
 	private IUserService userService;
+	private IUserService2 userService2;
+	public IUserService2 getUserService2() {
+		return userService2;
+	}
+	@Autowired
+	public void setUserService2(IUserService2 userService2) {
+		this.userService2 = userService2;
+	}
 	public IUserService getUserService() {
 		return userService;
 	}
@@ -31,9 +40,16 @@ public class UserController {
 	@RequestMapping("/getUser/{id}")
 	public String getUser(@PathVariable String id,HttpServletRequest request){
 		User u = userService.getUserById(id);
-		 System.out.println("进入了getuser方法");
-		request.setAttribute("user", u);
+		System.out.println("进入了getuser方法");
+		request.setAttribute("user1", u);
 		return "showUser";
+	}
+	@RequestMapping("/test/{id}")
+	public String test(@PathVariable String id,HttpServletRequest request){
+		User u = userService2.getUserById(id);
+		System.out.println("进入了test方法");
+		request.setAttribute("user2", u);
+		return "showUser_2";
 	}
 	  @RequestMapping(method={RequestMethod.GET,RequestMethod.POST})
      public String login(HttpSession session,String username,String password) throws Exception{

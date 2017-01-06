@@ -56,7 +56,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 			<property name="prefix" value="/" />
-			<property name="suffix" value=".html" />
+			<property name="suffix" value=".jsp" />
 		</bean>      
 		<!-- 在实际开发中通常都需配置 mvc:annotation-driven标签,这个标签是开启注解 -->
 		<mvc:annotation-driven></mvc:annotation-driven>
