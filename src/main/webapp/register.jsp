@@ -96,11 +96,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col-md-6">
 							<p class="col-md-3 your-para" style="padding-top: 3%">选择身份</p>
 							<div class="col-md-8" style="padding-top: 2%">
-								<input type="radio" name="radio" id="d_p" value="" checked>
-								<label style="color: #888;">医生</label>
+								<input type="radio" name="d_p" id="d_p" value="d" checked>    
+				             	<label style="color: #888;">医生</label>  
 								&nbsp
-								<input type="radio" name="radio" id="d_p" value="">
-								<label style="color: #888;">患者</label>
+								<input type="radio" name="d_p" id="d_p" value="p">
+								<label style="color: #888;">患者</label>  
 							</div>
 						</div>
 						<br /><br />
